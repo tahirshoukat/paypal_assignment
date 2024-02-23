@@ -6,7 +6,7 @@ const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: '',
-  database: 'test'
+  database: 'paypal_assignment'
 });
 
 // Connect to the database
@@ -20,7 +20,7 @@ connection.connect((err) => {
 
 // Function to store data in the MySQL table
 function saveOrder(data) {
-  const query = 'INSERT INTO order SET ?';
+  const query = 'INSERT INTO orders SET ?';
 
   connection.query(query, data, (error, results, fields) => {
     if (error) {
@@ -31,5 +31,4 @@ function saveOrder(data) {
   });
 }
 
-// Close the connection to the database when done
-connection.end();
+module.exports = { saveOrder };
